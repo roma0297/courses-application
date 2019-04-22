@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<employees>
+  <employee>
+    <id>100</id>
+    <name>Sara</name>
+    <dept>Admin</dept>
+  </employee>
+  <employee>
+    <id>200</id>
+    <name>Mike</name>
+    <dept>Account</dept>
+  </employee>
+  <employee>
+    <id>300</id>
+    <name>Joe</name>
+    <dept>IT</dept>
+  </employee>
+  <employee>
+    <id>400</id>
+    <name>Cindy</name>
+    <dept>IT</dept>
+  </employee>
+</employees>

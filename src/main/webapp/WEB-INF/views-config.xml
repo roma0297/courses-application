@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+                      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+  <!-- JSP view configuration -->
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    <property name="prefix" value="/WEB-INF/views/jsp/"/>
+    <property name="suffix" value=".jsp"/>
+    <property name="order" value="5"/>
+  </bean>
+
+  <!-- Pdf view configuration -->
+  <bean class="org.springframework.web.servlet.view.XmlViewResolver">
+    <property name="location" value="/WEB-INF/spring-pdf-views.xml"/>
+    <property name="order" value="1"/>
+  </bean>
+
+  <!-- Freemarker view configuration -->
+  <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+    <property name="prefix" value=""/>
+    <property name="suffix" value=".ftl"/>
+    <property name="order" value="2"/>
+  </bean>
+
+  <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+    <property name="templateLoaderPath" value="/WEB-INF/views/ftl/"/>
+  </bean>
+
+  <!-- XML view configuration -->
+  <bean class="org.springframework.web.servlet.view.xslt.XsltViewResolver">
+    <property name="prefix" value="/WEB-INF/views/xsl/"/>
+    <property name="suffix" value=".xslt"/>
+    <property name="order" value="7"/>
+  </bean>
+
+  <!-- Excel view configuration -->
+  <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+    <property name="order" value="4"/>
+  </bean>
+
+</beans>

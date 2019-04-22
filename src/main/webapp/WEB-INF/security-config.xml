@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+                      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                      http://www.springframework.org/schema/security
+                      http://www.springframework.org/schema/security/spring-security-4.2.xsd
+                      http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+  <!-- Enabling interceptors -->
+  <mvc:interceptors>
+    <mvc:interceptor>
+      <mvc:mapping path="/"/>
+      <beans:bean class="com.vitasoft.interceptors.MyInterceptor"/>
+    </mvc:interceptor>
+
+    <mvc:interceptor>
+      <mvc:mapping path="/url"/>
+      <beans:bean class="com.vitasoft.interceptors.MyInterceptor2"/>
+    </mvc:interceptor>
+  </mvc:interceptors>
+
+  <!-- Enabling security -->
+  <http auto-config="true">
+    <csrf disabled="true"/>
+    <form-login login-page="/login" default-target-url="/courses"/>
+    <intercept-url pattern="/" access="permitAll()"/>
+    <intercept-url pattern="/login" access="permitAll()"/>
+    <intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+  </http>
+
+  <authentication-manager>
+    <authentication-provider user-service-ref="userService">
+      <password-encoder ref="passwordEncoder"/>
+    </authentication-provider>
+  </authentication-manager>
+
+  <beans:bean id="passwordEncoder"
+    class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    <beans:constructor-arg value="11"/>
+  </beans:bean>
+
+</beans:beans>
