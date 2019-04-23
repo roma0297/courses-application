@@ -6,13 +6,14 @@ import com.vitasoft.model.UserModel;
 import java.util.List;
 import javax.annotation.Resource;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Resource
 	private UserRepository userRepository;

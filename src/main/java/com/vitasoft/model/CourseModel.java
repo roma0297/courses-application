@@ -1,18 +1,15 @@
 package com.vitasoft.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class CourseModel {
+	@Id
 	private String id;
 	private String name;
 	private String description;
 	private Double price;
-	
-	public CourseModel(String id, String name, String description, Double price) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.price = price;
-	}
 	
 	public String getId() {
 		return id;

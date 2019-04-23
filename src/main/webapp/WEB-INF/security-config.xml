@@ -29,10 +29,11 @@
     <intercept-url pattern="/" access="permitAll()"/>
     <intercept-url pattern="/login" access="permitAll()"/>
     <intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+    <remember-me key="uniqueAndSecret" token-repository-ref="persistentTokenRepository"/>
   </http>
 
   <authentication-manager>
-    <authentication-provider user-service-ref="userService">
+    <authentication-provider user-service-ref="userDetailsServiceImpl">
       <password-encoder ref="passwordEncoder"/>
     </authentication-provider>
   </authentication-manager>
@@ -41,5 +42,10 @@
     class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
     <beans:constructor-arg value="11"/>
   </beans:bean>
+
+  <!-- Enabling method security -->
+  <global-method-security secured-annotations="enabled"
+                          jsr250-annotations="enabled"
+                          pre-post-annotations="enabled"/>
 
 </beans:beans>

@@ -21,6 +21,9 @@
       <label for="password" class="sr-only">Password</label>
       <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
     </p>
+    <p>
+      Remember Me: <input type="checkbox" name="remember-me" />
+    </p>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>
 </div></body></html>
