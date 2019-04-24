@@ -216,7 +216,18 @@
       <artifactId>activation</artifactId>
       <version>1.1.1</version>
     </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.4</version>
+    </dependency>
 
+    <!-- Facebook social login enabled -->
+    <dependency>
+      <groupId>org.springframework.social</groupId>
+      <artifactId>spring-social-facebook</artifactId>
+      <version>2.0.3.RELEASE</version>
+    </dependency>
   </dependencies>
 
   <build>

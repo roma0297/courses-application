@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 
-<html lang="en"><head>
+<html lang="en">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Please sign in</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
@@ -22,14 +24,14 @@
       <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
     </p>
     <p>
-      Remember Me: <input type="checkbox" name="remember-me" />
+      Remember Me: <input type="checkbox" name="remember-me"/>
     </p>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>
-</div></body></html>
-
-<#--<form action="/j_spring_security_check" method="post">-->
-<#--<label for="username">Username</label><input type="text" id="username" name="j_username"><br/>-->
-<#--<label for="password">Password</label><input type="text" id="password" name="j_password"><br/>-->
-<#--<input type="submit" value="Login!">-->
-<#--</form>-->
+  <form action="/signin/facebook" method="post">
+    <input type="hidden" name="scope" value="public_profile"/>
+    <input type="submit" value="Login using Facebook"/>
+  </form>
+</div>
+</body>
+</html>

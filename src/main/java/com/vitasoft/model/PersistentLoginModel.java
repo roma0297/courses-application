@@ -7,19 +7,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "LOGINS_PERSISTENT")
+@Table(name = "logins_persistent")
 public class PersistentLoginModel {
 	@Id
-	@Column(name = "SERIES")
+	@Column(name = "series")
 	private String series;
 	
-	@Column(name = "USERNAME", nullable = false)
+	@Column(name = "username", nullable = false)
 	private String username;
 	
-	@Column(name = "TOKEN", nullable = false)
+	@Column(name = "token", nullable = false)
 	private String token;
 	
-	@Column(name = "LAST_USED", nullable = false)
+	@Column(name = "last_used", nullable = false)
 	private Date lastUsed;
 	
 	public String getSeries() {

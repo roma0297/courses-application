@@ -2,31 +2,47 @@ package com.vitasoft.model;
 
 import java.util.Collection;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
+@Table(name = "user")
 public class UserModel implements UserDetails {
 	
 	@Id
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "username")
 	private String username;
+	@Column(name = "password")
 	private String password;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "age")
 	private Integer age;
 	@OneToMany(fetch = FetchType.EAGER)
 	private Set<AuthorityModel> authorities;
+	@Column(name = "account_non_expired")
 	private boolean accountNonExpired;
+	@Column(name = "account_non_locked")
 	private boolean accountNonLocked;
+	@Column(name = "credentials_non_expired")
 	private boolean credentialsNonExpired;
+	@Column(name = "enabled")
 	private boolean enabled;
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_profile")
+	private Set<SocialProfileModel> socialProfiles;
 	
 	public Integer getId() {
 		return id;
@@ -113,5 +129,13 @@ public class UserModel implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return enabled;
+	}
+	
+	public Set<SocialProfileModel> getSocialProfiles() {
+		return socialProfiles;
+	}
+	
+	public void setSocialProfiles(Set<SocialProfileModel> socialProfiles) {
+		this.socialProfiles = socialProfiles;
 	}
 }

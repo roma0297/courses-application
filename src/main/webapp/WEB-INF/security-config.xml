@@ -28,6 +28,9 @@
     <form-login login-page="/login" default-target-url="/courses"/>
     <intercept-url pattern="/" access="permitAll()"/>
     <intercept-url pattern="/login" access="permitAll()"/>
+    <intercept-url pattern="/signin/**" access="permitAll()"/>
+    <intercept-url pattern="/signin*" access="permitAll()"/>
+    <intercept-url pattern="/signup/**" access="permitAll()"/>
     <intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
     <remember-me key="uniqueAndSecret" token-repository-ref="persistentTokenRepository"/>
   </http>
@@ -47,5 +50,34 @@
   <global-method-security secured-annotations="enabled"
                           jsr250-annotations="enabled"
                           pre-post-annotations="enabled"/>
+
+  <!-- Enabling social login -->
+  <beans:bean id="connectionFactorLocator" class="org.springframework.social.connect.support.ConnectionFactoryRegistry">
+    <beans:property name="connectionFactories">
+      <beans:list>
+        <beans:bean class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
+          <beans:constructor-arg name="appId" value="${spring.social.facebook.appId}"/>
+          <beans:constructor-arg name="appSecret" value="${spring.social.facebook.appSecret}"/>
+        </beans:bean>
+      </beans:list>
+    </beans:property>
+  </beans:bean>
+
+  <beans:bean id="usersConnectionRepository" class="org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository">
+    <beans:constructor-arg name="dataSource" ref="dataSource"/>
+    <beans:constructor-arg name="connectionFactoryLocator" ref="connectionFactorLocator"/>
+    <beans:constructor-arg name="textEncryptor">
+      <beans:bean class="org.springframework.security.crypto.encrypt.Encryptors" factory-method="noOpText"/>
+    </beans:constructor-arg>
+    <beans:property name="connectionSignUp">
+      <beans:bean class="com.vitasoft.social.FacebookConnectionSignUp"/>
+    </beans:property>
+  </beans:bean>
+
+  <beans:bean id="providerSignInController" class="org.springframework.social.connect.web.ProviderSignInController">
+    <beans:constructor-arg name="connectionFactoryLocator" ref="connectionFactorLocator"/>
+    <beans:constructor-arg name="usersConnectionRepository" ref="usersConnectionRepository"/>
+    <beans:constructor-arg name="signInAdapter" ref="facebookSignInAdapter"/>
+  </beans:bean>
 
 </beans:beans>

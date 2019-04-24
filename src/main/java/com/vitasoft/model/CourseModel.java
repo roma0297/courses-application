@@ -1,14 +1,22 @@
 package com.vitasoft.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "course")
 public class CourseModel {
+	
 	@Id
+	@Column(name = "id")
 	private String id;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "description")
 	private String description;
+	@Column(name = "price")
 	private Double price;
 	
 	public String getId() {
