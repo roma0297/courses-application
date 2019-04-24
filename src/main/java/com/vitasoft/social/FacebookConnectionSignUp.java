@@ -9,7 +9,6 @@ import com.vitasoft.model.SocialProfileModel;
 import com.vitasoft.model.UserModel;
 import java.util.Collections;
 import javax.annotation.Resource;
-import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.stereotype.Component;
@@ -27,7 +26,11 @@ public class FacebookConnectionSignUp implements ConnectionSignUp {
 	@Override
 	public String execute(Connection<?> connection) {
 		UserModel user = new UserModel();
-		user.setUsername(connection.getKey().getProviderUserId());
+		user.setAccountNonExpired(true);
+		user.setAccountNonLocked(true);
+		user.setCredentialsNonExpired(true);
+		user.setEnabled(true);
+		user.setUsername(connection.getDisplayName().split("  ")[0]);
 		AuthorityModel authority = new AuthorityModel();
 		authority.setRole("ROLE_USER");
 		authorityRepository.save(authority);
