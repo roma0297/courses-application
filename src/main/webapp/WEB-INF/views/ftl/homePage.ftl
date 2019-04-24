@@ -26,19 +26,21 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
+    <@security.authorize access="isAuthenticated()">
       <li class="navbar-item">
-      <@security.authorize access="isAuthenticated()">
         <a href="/account" class="nav-link">
           <@security.authentication property="principal.username"/>
         </a>
-      </@security.authorize>
-      <@security.authorize access="! isAuthenticated()">
-        <a href="/login" class="nav-link">Login</a>
-      </@security.authorize>
       </li>
       <li class="navbar-item">
         <a href="/logout" class="nav-link">Logout</a>
       </li>
+    </@security.authorize>
+    <@security.authorize access="! isAuthenticated()">
+      <li class="navbar-item">
+        <a href="/login" class="nav-link">Login</a>
+      </li>
+    </@security.authorize>
     </ul>
   </div>
 </nav>

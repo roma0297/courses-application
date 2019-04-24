@@ -23,19 +23,19 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="navbar-item">
-                <c:choose>
-                    <c:when test="${not empty pageContext.request.userPrincipal}">
+            <c:choose>
+                <c:when test="${not empty pageContext.request.userPrincipal}">
+                    <li class="navbar-item">
                         <a href="/account" class="nav-link">${pageContext.request.userPrincipal.name}</a>
-                    </c:when>
-                    <c:otherwise>
-                        <a href="/login" class="nav-link">Login</a>
-                    </c:otherwise>
-                </c:choose>
-            </li>
-            <li class="navbar-item">
-                <a href="/logout" class="nav-link">Logout</a>
-            </li>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/logout" class="nav-link">Logout</a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <a href="/login" class="nav-link">Login</a>
+                </c:otherwise>
+            </c:choose>
         </ul>
     </div>
 </nav>
