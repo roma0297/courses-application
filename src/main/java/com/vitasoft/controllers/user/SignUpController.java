@@ -54,7 +54,6 @@ public class SignUpController {
 			usersConnectionRepository.createConnectionRepository(connection.getKey().getProviderUserId()).addConnection(connection);
 		}
 		
-		return ""
 		return new ModelAndView("redirect:/");
 	}
 	
