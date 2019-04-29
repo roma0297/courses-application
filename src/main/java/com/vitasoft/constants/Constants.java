@@ -9,5 +9,6 @@ public interface Constants {
 		String LOGIN_PAGE = "loginPage";
 		String MY_ACCOUNT_PAGE = "accountPage";
 		String COURSES_PDF = "coursesPdf";
+		String SIGN_UP_PAGE = "signUpPage";
 	}
 }

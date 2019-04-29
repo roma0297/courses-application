@@ -19,7 +19,7 @@ public class FacebookSignInAdapter implements SignInAdapter {
 	
 	@Override
 	public String signIn(String userId, Connection<?> connection, NativeWebRequest nativeWebRequest) {
-		socialProfileRepository.findById(new SocialProfileKey(userId, SocialLoginProvider.FACEBOOK))
+		socialProfileRepository.findById(new SocialProfileKey(connection.getKey().getProviderUserId(), SocialLoginProvider.FACEBOOK))
 			.ifPresent(socialProfile -> SecurityContextHolder.getContext()
 				.setAuthentication(new UsernamePasswordAuthenticationToken(socialProfile.getUser(), null, socialProfile.getUser().getAuthorities())));
 		

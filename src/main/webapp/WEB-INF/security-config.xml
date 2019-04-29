@@ -69,15 +69,20 @@
     <beans:constructor-arg name="textEncryptor">
       <beans:bean class="org.springframework.security.crypto.encrypt.Encryptors" factory-method="noOpText"/>
     </beans:constructor-arg>
-    <beans:property name="connectionSignUp">
-      <beans:bean class="com.vitasoft.social.FacebookConnectionSignUp"/>
-    </beans:property>
+    <!--<beans:property name="connectionSignUp">-->
+      <!--<beans:bean class="com.vitasoft.social.FacebookConnectionSignUp"/>-->
+    <!--</beans:property>-->
   </beans:bean>
 
   <beans:bean id="providerSignInController" class="org.springframework.social.connect.web.ProviderSignInController">
     <beans:constructor-arg name="connectionFactoryLocator" ref="connectionFactorLocator"/>
     <beans:constructor-arg name="usersConnectionRepository" ref="usersConnectionRepository"/>
     <beans:constructor-arg name="signInAdapter" ref="facebookSignInAdapter"/>
+  </beans:bean>
+
+  <beans:bean id="providerSignInUtils" class="org.springframework.social.connect.web.ProviderSignInUtils">
+    <beans:constructor-arg name="connectionFactoryLocator" ref="connectionFactorLocator"/>
+    <beans:constructor-arg name="connectionRepository" ref="usersConnectionRepository"/>
   </beans:bean>
 
 </beans:beans>
