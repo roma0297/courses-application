@@ -28,6 +28,7 @@
     <form-login login-page="/login" default-target-url="/courses"/>
     <intercept-url pattern="/" access="permitAll()"/>
     <intercept-url pattern="/login" access="permitAll()"/>
+    <intercept-url pattern="/courses/**" access="permitAll()"/>
     <intercept-url pattern="/signin/**" access="permitAll()"/>
     <intercept-url pattern="/signin*" access="permitAll()"/>
     <intercept-url pattern="/signup/**" access="permitAll()"/>

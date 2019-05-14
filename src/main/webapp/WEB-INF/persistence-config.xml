@@ -21,20 +21,6 @@
     <property name="maxActive" value="10"/>
   </bean>
 
-  <!-- Hibernate 5 SessionFactory Bean definition -->
-  <bean id="sessionFactory"
-    class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-    <property name="dataSource" ref="dataSource"/>
-    <property name="packagesToScan" value="com.vitasoft"/>
-    <property name="hibernateProperties">
-      <props>
-        <prop key="hibernate.dialect">${db.hibernate.dialect}</prop>
-        <prop key="hibernate.show_sql">${db.hibernate.show_sql}</prop>
-        <prop key="hibernate.hbm2ddl.auto">${db.hibernate.hbm2ddl.auto}</prop>
-      </props>
-    </property>
-  </bean>
-
   <!-- Create default configuration for Hibernate -->
   <bean id="hibernateJpaVendorAdapter"
     class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
@@ -63,7 +49,7 @@
   </bean>
 
   <!-- Enable annotation driven transaction management -->
-  <tx:annotation-driven/>
+  <tx:annotation-driven transaction-manager="transactionManager"/>
 
   <!-- Configure Spring Data JPA and set the base package of the repository interfaces -->
   <jpa:repositories base-package="com.vitasoft"/>
