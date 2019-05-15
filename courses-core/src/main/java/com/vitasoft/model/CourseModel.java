@@ -4,6 +4,7 @@ import com.vitasoft.hibernatesearch.bridges.AuthorStringBridge;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.FieldBridge;
@@ -33,6 +34,7 @@ public class CourseModel {
 	@Field
 	@FieldBridge(impl = AuthorStringBridge.class,
 		params = @Parameter(name = "padding", value = "5"))
+	@OneToOne
 	private AuthorModel author;
 	
 	public String getId() {
@@ -65,5 +67,13 @@ public class CourseModel {
 	
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+	
+	public AuthorModel getAuthor() {
+		return author;
+	}
+	
+	public void setAuthor(AuthorModel author) {
+		this.author = author;
 	}
 }

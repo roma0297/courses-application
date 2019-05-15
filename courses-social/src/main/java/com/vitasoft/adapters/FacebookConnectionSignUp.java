@@ -1,4 +1,4 @@
-package com.vitasoft.social;
+package com.vitasoft.adapters;
 
 import com.vitasoft.dao.AuthorityRepository;
 import com.vitasoft.dao.SocialProfileRepository;

@@ -1,4 +1,4 @@
-package com.vitasoft.social;
+package com.vitasoft.adapters;
 
 import com.vitasoft.dao.SocialProfileRepository;
 import com.vitasoft.enums.SocialLoginProvider;
@@ -11,7 +11,7 @@ import org.springframework.social.connect.web.SignInAdapter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.NativeWebRequest;
 
-@Component
+@Component("facebookSignInAdapter")
 public class FacebookSignInAdapter implements SignInAdapter {
 	
 	@Resource

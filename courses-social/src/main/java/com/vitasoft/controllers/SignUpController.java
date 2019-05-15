@@ -1,4 +1,4 @@
-package com.vitasoft.controllers.user;
+package com.vitasoft.controllers;
 
 import com.vitasoft.constants.Constants.Views;
 import com.vitasoft.forms.SignUpForm;
